@@ -52,7 +52,7 @@ namespace ActivityTest
 
             _globalHook.Dispose();
         }
-        
+
         private void Button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
@@ -102,7 +102,7 @@ namespace ActivityTest
             lock (_lockObjets)
                 _isMouseClickActive = true;
         }
-        
+
 
         private void Test()
         {
@@ -138,7 +138,7 @@ namespace ActivityTest
             while (counter >= 0 && !_interrupted)
             {
                 var count = counter;
-                label1.BeginInvoke((MethodInvoker)delegate { label1.Text = $@"00:{(int)count:D2}"; });
+                //label1.BeginInvoke((MethodInvoker)delegate { label1.Text = $@"00:{(int)count:D2}"; });
 
                 textBox1.BeginInvoke((MethodInvoker)delegate
                {
@@ -155,7 +155,7 @@ namespace ActivityTest
                        }
 
                        var info =
-                           $"{LastInputInfo.GetUserInactiveTime()} / {_isKeyouardActive} / {_isMouseClickActive} / {_isMouseMoveActive} {mousePositionInfo}  {_isMouseWheelkActive}\r\n";
+                           $"{LastInputInfo.GetUserInactiveTime()} / {LastInputInfo.GetUserInactiveTime2()} / {LastInputInfo.TickCount()} / {LastInputInfo.UnsignedTickCount()} / {LastInputInfo.InputInfo()} / {LastInputInfo.GetTickCount_32()} / {LastInputInfo.GetTickCount_64()} /  {_isKeyouardActive} / {_isMouseClickActive} / {_isMouseMoveActive} {mousePositionInfo}  {_isMouseWheelkActive}\r\n";
                        textBox1.AppendText(info);
                        sBuilder.Append(info);
 
@@ -191,7 +191,7 @@ namespace ActivityTest
                        $"Please send  '{fileName}' file to ScreenshotmMonitor support.\r\n");
                });
         }
-        
+
         private static string ReportSender(DateTime startTime, string data)
         {
             var fileName = $@"{Environment.CurrentDirectory}\{
